@@ -1,38 +1,658 @@
-.App {
+/* Root Variables */
+:root {
+  --primary-bg: #111827; /* Dark gray (Tailwind gray-900) */
+  --secondary-bg: #1f2937; /* Slightly lighter gray */
+  --text-color: #d1d5db; /* Light gray text */
+  --hover-color: #ffffff; /* White hover effect */
+  --highlight-color: #ffffff; /* Highlighted text */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/*home */
+.home-container {
+  position: fixed; /* Keeps it fixed on the screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Ensures it covers the entire viewport */
+  background-image: url('/public/images/background.jpg'); /* Ensure the correct path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: -1; /* Keeps it in the background */
+}
+
+
+/* Dark overlay for readability */
+.overlay {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Adds a slight dark overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 15%;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #d1d5db;
+  margin-top: 10px;
+}
+
+/* Content Section */
+.content {
+  max-width: 800px;
+  padding: 40px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  color: #e5e7eb;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+
+.mobile-menu .search-icon {
+  padding: 10px;
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--hover-color);
+  display: flex;
+  gap: 0.1rem;
+  cursor: pointer;
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+}
+
+.logo-char {
+  opacity: 0.2;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.logo-char.highlight {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Desktop Menu */
+.navbar div a {
+  margin: 0 10px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  color: var(--text-color);
+}
+
+.navbar div a:hover {
+  color: var(--hover-color);
+}
+
+/* Search Button */
+.navbar button {
+  background-color: var(--hover-color);
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.navbar button:hover {
+  background-color: var(--text-color);
+}
+
+/* Desktop Menu */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-item {
+  position: relative; /* Required for the pseudo-element */
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-item::after {
+  content: ""; /* Empty content to create the line */
+  position: absolute;
+  left: 50%; /* Start from the center */
+  bottom: -3px; /* Adjusts spacing below text */
+  width: 85%; /* Control underline width */
+  height: 2px; /* Thickness of the underline */
+  background-color: var(--hover-color);
+  transform: translateX(-50%) scaleX(0); /* Centered and hidden */
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  color: var(--hover-color);
+}
+
+.menu-item:hover::after {
+  transform: translateX(-50%) scaleX(1); /* Expands the underline */
+}
+
+/* Ensure active menu item stays highlighted */
+.menu-item.active {
+  color: var(--hover-color); /* Keep text color for active link */
+}
+
+.menu-item.active::after {
+  transform: translateX(-50%) scaleX(1); /* Keep underline visible */
+}
+
+/* Mobile Menu Button */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: var(--secondary-bg);
+  text-align: center;
+  padding: 10px 0;
+  flex-direction: column;
+}
+
+.mobile-menu-item {
+  display: block;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  color: var(--hover-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-menu-item:hover {
+  color: var(--text-color);
+}
+
+
+/*Our Team*/
+.our-team {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: #f9fafb;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.team-member {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.team-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  /* object-fit: cover; */
+  margin-bottom: 1rem;
+}
+
+.team-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.team-role {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+
+
+/* Research Section Styles */
+.research-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.research-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+.research-section {
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #374151;
+  margin-bottom: 15px;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  max-width: 250px;
+}
+
+.research-image {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.research-image:hover {
+  transform: scale(1.05);
+}
+
+
+.research-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.text-content {
+  flex: 2;
+}
+
+
+/*News */
+.news-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.news-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-item {
+  padding: 15px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.news-item:hover {
+  transform: scale(1.02);
+}
+
+.news-date {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #374151;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.news-event {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+/*Teaching and Outreach*/
+.teaching-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.teaching-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.model {
+  height: 60vh;
+  width: auto;
+  position: relative; /* Or absolute, depending on your layout */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.model-instruction {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 60px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.afm-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 15px 0;
+  text-align: justify;
+}
+
+.afm-description a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.afm-description a:hover {
+  text-decoration: underline;
+}
+
+
+.teaching-philosophy {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.teaching-philosophy h2 {
+  font-size: 1.8rem;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.teaching-philosophy p {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.courses h2,
+.outreach h2 {
+  font-size: 1.8rem;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.course-section {
+  margin-bottom: 20px;
+}
+
+.course-section h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.course-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.course-section li {
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.outreach ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.outreach li {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+
+/* Photos */
+.photos-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.photos-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.photo-card {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+}
+
+.photo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.photo-img:hover {
+  transform: scale(1.05);
+}
+
+.photo-title {
+  font-size: 1rem;
+  color: #374151;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Special styling for the award photo */
+
+.award-img {
+  height: 100%;
+  width: auto;
+  max-height: 200px; /* Adjust this based on your design needs */
+  object-fit: contain;
+}
+
+
+/* Publications Page */
+.publications-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.publications-list {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.publication-row {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  padding: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.publication-row:hover {
+  transform: translateY(-5px);
+}
+
+.publication-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.publication-content {
+  text-align: left;
+  flex-grow: 1;
+}
+
+.publication-title {
+  font-size: 0.9rem;
+  color: #333;
+  font-style: italic;
+}
+
+.publication-type-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #003366; /* Dark Blue */
+}
+
+.publication-author {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.read-more-btn {
+  color: darkblue;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.read-more-btn:hover {
+  color: blue;
+}
+
+
+/* Show Mobile Menu when Active */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: flex;
   }
 }
+
+
+
