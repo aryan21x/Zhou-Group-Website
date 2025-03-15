@@ -124,7 +124,7 @@ const OurTeam = () => {
                 )}
                 {member.research && <h4> Research </h4> }
                 {member.research && <p className="team-research">{member.research}</p>}
-                {member.hobbies && <p className="team-hobbies">Hobbies: {member.hobbies}</p>}
+                {member.hobbies && <p className="team-hobbies"> <strong> Hobbies:</strong> {member.hobbies}</p>}
                 <h4 className="team-contact">Contact: {member.contact}</h4>
               </div>
             ))}

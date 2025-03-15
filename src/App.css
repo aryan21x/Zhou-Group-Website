@@ -244,6 +244,8 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   justify-items: center;
+  /* max-width: 1000px; 
+  margin: 0 auto; */
 }
 
 .team-member {
@@ -253,6 +255,8 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease-in-out;
+  max-width: 800px; /* Adjust this value as needed */
+  box-sizing: border-box; /* Ensures padding doesn’t cause overflow */
 }
 
 .team-member:hover {
@@ -260,8 +264,14 @@
 }
 
 .team-photo {
-  width: 200px;
-  height: 200px;
+  /* width: 200px;
+  height: 200px; */
+
+  width: 100%;
+  max-width: 150px; /* Keeps image within bounds */
+  height: auto; /* Maintain aspect ratio */
+
+
   border-radius: 50%;
   /* object-fit: cover; */
   margin-bottom: 1rem;
@@ -276,6 +286,12 @@
 .team-role {
   font-size: 1rem;
   color: #6b7280;
+}
+
+.team-contact {
+  word-wrap: break-word; /* Ensure long email doesn't overflow */
+  overflow-wrap: break-word; /* Same as word-wrap, for better compatibility */
+  white-space: normal; /* Ensures text wraps within the container */
 }
 
 
@@ -641,6 +657,124 @@
 
 /* Show Mobile Menu when Active */
 @media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .research-container {
+    padding: 20px 10px;
+  }
+
+  .research-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .research-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .image-wrapper {
+    max-width: 100%;
+  }
+
+  .research-image {
+    max-width: 80%;
+  }
+
+  .text-content {
+    flex: 1;
+  }
+  
+  .publications-page {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .publications-list {
+    gap: 15px;
+  }
+
+  .publication-row {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .publication-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px;
+  }
+
+  .publication-content {
+    text-align: center;
+  }
+
+  .publication-title {
+    font-size: 1rem;
+  }
+
+  .publication-type-title {
+    font-size: 1.3rem;
+  }
+
+  .publication-author {
+    font-size: 0.85rem;
+  }
+
+  .read-more-btn {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .team-grid {
+    display: flex; /* Use flex to prevent unwanted grid wrapping */
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; /* Prevents it from exceeding screen width */
+    width: 100%; /* Ensures full responsiveness */
+  }
+
+  .our-team {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .team-member {
+    width: 100%;  /* Ensures it adapts to smaller screens */
+    box-sizing: border-box; /* Includes padding in width calculation */
+  }
+  
+}
+
+
+/* Show Mobile and Tablet Menu when Active */
+@media (min-width: 600px) and (max-width: 1024px) {
   .menu {
     display: none;
   }
