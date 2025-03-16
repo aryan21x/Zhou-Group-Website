@@ -40,7 +40,8 @@ const Navbar = () => {
     { name: "Publications", path: "/publications" },
     { name: "News", path: "/news" },
     { name: "Teaching & Outreach", path: "/teaching-outreach" },
-    { name: "Photos", path: "/photos" }
+    { name: "Photos", path: "/photos" },
+    { name: "Login", path: "/login" }
   ];
 
   return (

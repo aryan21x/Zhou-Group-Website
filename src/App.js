@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import OurTeam from "./components/OurTeam";
+import Login from "./components/Login";
 import Research from "./components/Research";
 import Publications from "./components/Publication";
 import News from "./components/News";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/teaching-outreach" element={<TeachingOutreach />} />
         <Route path="/photos" element={<Photos />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

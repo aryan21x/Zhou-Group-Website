@@ -1,4 +1,13 @@
 import React from "react";
+import { database } from "../firebaseConfig";
+import { ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-database.js";
+
+const authRef = ref(database, 'auth');
+
+onValue(authRef, (snapshot) => {
+  const auth = snapshot.val();
+  console.log(auth);
+});
 
 const teamSections = [
   {
