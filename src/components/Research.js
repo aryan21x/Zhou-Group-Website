@@ -26,7 +26,7 @@ const Research = () => {
     <div className="research-container">
       <h1 className="research-title">Our Research Areas</h1>
       {researchAreas.map((area, index) => (
-        <div key={index} className="research-section">
+        <div key={index} className="research-section animate__animated animate__fadeInLeft">
           <div className="image-wrapper">
             <img src={area.image} alt={area.title} className="research-image" />
           </div>

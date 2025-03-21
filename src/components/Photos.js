@@ -19,7 +19,7 @@ const Photos = () => {
   return (
     <div className="photos-container">
       <h1 className="photos-title">Photos</h1>
-      <div className="photos-grid">
+      <div className="photos-grid animate__animated animate__fadeInLeft">
         {photosData.map((photo, index) => (
           <div key={index} className={`photo-card ${photo.special ? "award-photo" : ""}`}>
             <img

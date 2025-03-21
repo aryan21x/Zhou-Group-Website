@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Root Variables */
 :root {
   --primary-bg: #111827; /* Dark gray (Tailwind gray-900) */
@@ -6,54 +10,80 @@
   --hover-color: #ffffff; /* White hover effect */
   --highlight-color: #ffffff; /* Highlighted text */
   --shadow-color: rgba(0, 0, 0, 0.2);
+  --commonBack: white;
+}
+
+body {
+  background-color: var(--commonBack); /* You can change the color or use an image */
+  font-family: Arial, sans-serif; /* Optional: Set the font for the whole app */
+  margin: 0;
+  padding: 0;
 }
 
 /*home */
 .home-container {
-  position: fixed; /* Keeps it fixed on the screen */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Ensures it covers the entire viewport */
-  background-image: url('/public/images/background.jpg'); /* Ensure the correct path */
+  height: 100%; 
+  /* background-image: url('/public/images/background2.gif'); 
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: right;
   color: white;
-  z-index: -1; /* Keeps it in the background */
+  overflow: hidden; /* Prevents video overflow */
+  z-index: -1; 
 }
 
+.tooltip{
+  position: fixed;
+  left: 2%;
+  bottom: -3%;
+}
+
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire screen */
+  z-index: -1; /* Keep the video behind the content */
+}
 
 /* Dark overlay for readability */
 .overlay {
   width: 100%;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Adds a slight dark overlay */
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.4); /* Adds a slight dark overlay */
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 /* Hero Section */
 .hero {
   margin-top: 15%;
   padding: 20px;
+  margin-right: 10%;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: bold;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #d1d5db;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 /* Content Section */
@@ -85,6 +115,10 @@
   box-shadow: 0 4px 10px var(--shadow-color);
 }
 
+.navbar.no-background {
+  background-color: transparent; /* Make the background transparent */
+  box-shadow: none;
+}
 
 .mobile-menu .search-icon {
   padding: 10px;
@@ -212,6 +246,7 @@
   flex-direction: column;
 }
 
+
 .mobile-menu-item {
   display: block;
   padding: 10px 0;
@@ -230,7 +265,7 @@
 .our-team {
   text-align: center;
   padding: 3rem 2rem;
-  background-color: #f9fafb;
+  background-color: var(--commonBack);
 }
 
 .team-title {
@@ -238,6 +273,7 @@
   color: #111827;
   margin-bottom: 2rem;
 }
+
 
 .team-grid {
   display: grid;
@@ -434,9 +470,9 @@
   position: relative; /* Or absolute, depending on your layout */
 }
 
-.model-instruction {
+.model-title{
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   margin-top: 60px;
@@ -518,6 +554,41 @@
   color: #4b5563;
   margin-bottom: 10px;
 }
+
+.outreach-images {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.outreach-header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.image-gallery {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto; */
+}
+
+.outreach-image {
+  width: 100%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.outreach-image:hover {
+  transform: scale(1.05);
+}
+
 
 
 /* Photos */
@@ -616,7 +687,7 @@
 .publication-image {
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  /* object-fit: cover; */
   border-radius: 8px;
   margin-right: 20px;
 }
@@ -657,6 +728,7 @@
 
 /* Show Mobile Menu when Active */
 @media (max-width: 768px) {
+
   .menu {
     display: none;
   }
@@ -667,6 +739,40 @@
 
   .mobile-menu {
     display: flex;
+    z-index: 50;
+  }
+
+  .navMobile{
+    background-color: var(--primary-bg) !important;
+  }
+
+  .hero {
+    margin-top: 25%; /* Reduce top margin */
+    padding: 10px;  /* Reduce padding */
+  }
+
+  .hero-title {
+    font-size: 2.5rem; /* Smaller font size for hero title */
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem; /* Smaller font size for subtitle */
+    margin-top: 8px;
+  }
+
+  /* Adjust Content Section */
+  .content {
+    padding: 20px; /* Reduce padding */
+    max-width: 100%; /* Ensure it fills the screen */
+  }
+
+  .section-title {
+    font-size: 1.5rem; /* Smaller font size for section titles */
+    margin-bottom: 8px;
+  }
+
+  .section-text {
+    font-size: 1rem; /* Smaller font size for text */
   }
 
   .research-container {
@@ -770,6 +876,13 @@
     box-sizing: border-box; /* Includes padding in width calculation */
   }
   
+  .atom-mobile{
+    width:50px !important;
+  }
+
+  .tooltip{
+    display: none;
+  }
 }
 
 
@@ -785,6 +898,7 @@
 
   .mobile-menu {
     display: flex;
+    z-index: 50;
   }
 }
 

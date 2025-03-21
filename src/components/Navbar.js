@@ -22,11 +22,10 @@ const Navbar = () => {
         } else {
           clearInterval(interval);
         }
-      }, 100);
+      }, 150);
     };
     startTypingEffect();
   }, [resetAnimation]);
-
 
   const handleHomeClick = () => {
     setResetAnimation((prev) => !prev);
@@ -43,8 +42,11 @@ const Navbar = () => {
     { name: "Photos", path: "/photos" }
   ];
 
+  // Check if we're on the homepage to add/remove background class
+  const isHomePage = location.pathname === "/";
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isHomePage ? "no-background" : ""}${menuOpen ? "navMobile" : ""}`}>
       {/* Logo */}
       <div className="logo">
         <div className="logo-text">
@@ -75,7 +77,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="mobile-menu">
+        <div className={`mobile-menu`}>
           {menuItems.map((item) => (
             <Link
               key={item.name}

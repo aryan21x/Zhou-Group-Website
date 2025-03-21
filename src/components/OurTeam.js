@@ -56,6 +56,16 @@ const teamSections = [
         contact: "emily[dot]bates[at]mines[dot]sdsmt[dot]edu",
         image: "/images/emily.jpg",
       },
+      {
+        name: "Natnael Sinebo",
+        education: [
+          "B.S., South Dakota School of Mines and Technology, 2019 - present"
+        ],
+        hobbies: "reading the bible, watching soccer and track events, hiking, and traveling",
+        research: "study and understand the properties of nanomaterials and their application in diagnosis, drug delivery systems, implants, biosensing, and bioimaging devices",
+        contact: "natnael[dot]sinebo[at]mines[dot]sdsmt[dot]edu",
+        image: "/images/Natnael.jpg",
+      },
     ],
   },
   {
@@ -87,12 +97,63 @@ const teamSections = [
       {
         name: "Aryan Raval",
         education: [
-          "B.S. in Computer Science at South Dakota School of Mines and Technology, 2022–present ",
+          "B.S. in Computer Science at South Dakota School of Mines and Technology, 2022-present ",
         ],
         hobbies: "working out at the gym, hiking, rock climbing, and watching soccer",
         research: "",
         contact: "aryan[dot]raval[at]mines[dot]sdsmt[dot]edu",
         image: "/images/aryan.jpg",
+      },
+      {
+        name: "Marc Tchona",
+        education: [
+          "B.S., in Electrical Engineering, South Dakota School of Mines and Technology, 2022-present"
+        ],
+        hobbies: "Music, Table Tennis, Chess, Problem Solving",
+        research: "Mechatronics and Applied Robotics",
+        contact: "marc[dot]tchona[at]mines[dot]sdsmt[dot]edu",
+        image: "/images/marc.jpg",
+      },
+    ],
+  },
+  {
+    title: "TEM instrumentation specialist",
+    members: [
+      {
+        name: "Vanessa Kee",
+        education: [
+          "B.S. in Chemical Engineering at South Dakota School of Mines and Technology",
+        ],
+        hobbies: "cell culture, transmission electron microscopy and atomic force microscopy",
+        research: "cell culture, transmission electron microscopy and atomic force microscopy",
+        contact: "Vanessa[dot]Kee[at]sdsmt[dot]edu , EEP235C",
+        image: "/images/Vanessa.jpg",
+      },
+    ],
+  },
+  {
+    title: "Alumni",
+    members: [
+      {
+        name: "Kory Engelstad",
+        education: [
+          "B.S., South Dakota School of Mines and Technology, 2021 - present",
+        ],
+        hobbies: "playing violin, hiking and hunting, playing magic the gathering",
+        research: "study and understand properties of nanomaterials and their application in tissue engineering and the medical field",
+        contact: "kory[dot]engelstad[at]mines[dot]sdsmt[dot]edu",
+        image: "/images/KoryDp.jpg",
+      },
+      {
+        name: "Josiah Baumeister",
+        education: [
+          "B.S in Electrical Engineering at South Dakota School of Mines & Technology, 2023-Present",
+          "M.S in Electrical Engineering at South Dakota School of Mines & Technology, 2024-Present",
+          "Associates of Science at Front Range Community College, Completed, 2021-2023",
+        ],
+        hobbies: "weightlifting, travel, computers, woodworking, sports, bible study",
+        contact: "josiah[dot]baumeister[at]mines[dot]sdsmt[dot]edu",
+        image: "/images/josiah.jpg",
       },
     ],
   },
@@ -104,7 +165,7 @@ const OurTeam = () => {
     <div className="our-team">
       <h1 className="team-title">Our Team</h1>
       {teamSections.map((section, index) => (
-        <div key={index} className="team-section">
+        <div key={index} className="team-section animate__animated animate__fadeInLeft">
           <h2 className="team-section-title">{section.title}</h2>
           <div className="team-grid">
             {section.members.map((member, idx) => (

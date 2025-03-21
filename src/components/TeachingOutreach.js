@@ -2,7 +2,7 @@ import React , { useState, useRef, useEffect } from "react";
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF , PerspectiveCamera} from '@react-three/drei';
 import * as THREE from 'three';
-
+import { Carousel } from "./ui/carousel";
 
 
 const courses = [
@@ -51,11 +51,13 @@ const outreachEvents = [
   { year: "2022 Fall", event: "RCAS 8th Grade College & Career Fair" },
 ];
 
+
 const outreachImages = [
-  { src: "/images/outreach1.jpg", alt: "Outreach Event 1" },
-  { src: "/images/outreach2.jpg", alt: "Outreach Event 2" },
-  { src: "/images/outreach3.jpg", alt: "Outreach Event 3" },
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach1.jpg", alt: "Outreach Event 1" },
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach2.jpg", alt: "Outreach Event 2" },
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach3.jpg", alt: "Outreach Event 3" },
 ];
+
 
 
 const TeachingOutreach = () => {
@@ -152,7 +154,20 @@ const TeachingOutreach = () => {
 
     <div className="teaching-container">
       <h1 className="teaching-title">Teaching & Outreach</h1>
-      <section className="teaching-philosophy">
+
+      <h2 className="outreach-header text-center">Outreach in Action</h2>
+      <section className="outreach-images animate__animated animate__fadeInLeft">
+        <div className="image-gallery">
+          {/* {outreachImages.map((image, index) => (
+            <img key={index} src={image.src} alt={image.alt} className="outreach-image" />
+          ))} */}
+          <div className="relative overflow-hidden w-full h-full py-20">
+            <Carousel slides={outreachImages} />
+          </div>
+        </div>
+      </section>
+
+      <section className="teaching-philosophy mt-4 animate__animated animate__fadeInLeft">
         <h2>Teaching Philosophy</h2>
         <p>
           As a researcher with training in a broad spectrum of chemistry and
@@ -162,11 +177,11 @@ const TeachingOutreach = () => {
           discoveries.
         </p>
       </section>
-
+      
       <section className="courses">
         <h2>Courses</h2>
         {courses.map((course, index) => (
-          <div key={index} className="course-section">
+          <div key={index} className="course-section animate__animated animate__fadeInLeft">
             <h3>{course.semester}</h3>
             <ul>
               {course.classes.map((className, idx) => (
@@ -178,9 +193,9 @@ const TeachingOutreach = () => {
       </section>
 
       <section className="outreach">
-        <h2>Outreach</h2>
+        {/* <h2>Outreach</h2> */}
 
-        <p className="model-instruction">Atomic Force Microscope - Click to Open</p>
+        <p className="model-title">Atomic Force Microscope - Click to Open</p>
         <p className="afm-description">
         The Atomic Force Microscope (AFM) is a powerful tool used to image surfaces at the nanometer scale. 
         It operates by scanning a sharp tip over a sample surface, allowing researchers to study material properties 
@@ -190,6 +205,7 @@ const TeachingOutreach = () => {
         </p>
         <div className ="model">
         <Canvas>
+          <color attach="background" args={["#2a2a2a"]} />
           <PerspectiveCamera key={refreskKey} makeDefault position={[0, 100, 1000]} fov={45} near={10} far={2000} ref={cameraRef}/>
           <ambientLight intensity={0.75} position={[10, 10, 10]} />
           <directionalLight position={[400, 400, 1000]} intensity={0.75} castShadow />
@@ -213,22 +229,13 @@ const TeachingOutreach = () => {
             </group>
         </Canvas>
         </div>
-        <ul>
+        {/* <ul>
           {outreachEvents.map((event, index) => (
             <li key={index}>
               <strong>{event.year}:</strong> {event.event}
             </li>
           ))}
-        </ul>
-      </section>
-
-      <section className="outreach-images">
-        <h2>Outreach in Action</h2>
-        <div className="image-gallery">
-          {outreachImages.map((image, index) => (
-            <img key={index} src={image.src} alt={image.alt} className="outreach-image" />
-          ))}
-        </div>
+        </ul> */}
       </section>
     </div>
   );

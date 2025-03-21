@@ -31,7 +31,7 @@ const News = () => {
   return (
     <div className="news-container">
       <h1 className="news-title">Latest News</h1>
-      <div className="news-list">
+      <div className="news-list animate__animated animate__fadeInLeft">
         {newsItems.map((news, index) => (
           <div key={index} className="news-item">
             <span className="news-date">{news.date}</span>
