@@ -1,7 +1,7 @@
 import React from "react";
 
 const newsItems = [
-  { date: "02/2025", event: "Welcome Emily to the group!" },
+  { date: "02/2025", event: "Welcome Emily and Marc to the group!" },
   { date: "12/2024", event: "Welcome Aryan and Ky Duyen to the group!" },
   { date: "09/2024", event: "Welcome Zinnia to the group!" },
   { date: "09/2024", event: "Our group received a DOE award on Building EPSCoR-State/National Laboratory Partnerships! Thanks DOE for supporting our research and our great partners at the Ames National Lab." },

@@ -20,6 +20,17 @@ body {
   padding: 0;
 }
 
+.attribution-footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  /* color: rgba(255, 255, 255, 0.7); */
+  color: black;
+  z-index: 9999;
+}
+
+
 /*home */
 .home-container {
   position: fixed; 
@@ -41,9 +52,7 @@ body {
 }
 
 .tooltip{
-  position: fixed;
-  left: 2%;
-  bottom: -3%;
+  justify-content: center;
 }
 
 
@@ -206,6 +215,36 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
+.dropdown-menu {
+  position: absolute;
+  background: var(--primary-bg);
+  color: black;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
+}
+
+.mobile-dropdown {
+  color: white;
+}
+
+.mobile-subitem {
+  margin-left: 1rem;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
 .menu-item:hover {
   color: var(--hover-color);
 }
@@ -222,6 +261,7 @@ body {
 .menu-item.active::after {
   transform: translateX(-50%) scaleX(1); /* Keep underline visible */
 }
+
 
 /* Mobile Menu Button */
 .menu-button {
@@ -322,6 +362,11 @@ body {
 .team-role {
   font-size: 1rem;
   color: #6b7280;
+}
+
+.team-education {
+  list-style-type: none; /* Remove dots (bullets) */
+  padding-left: 0; /* Remove any left padding */
 }
 
 .team-contact {
@@ -452,7 +497,7 @@ body {
 
 /*Teaching and Outreach*/
 .teaching-container {
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 40px 20px;
 }
@@ -466,16 +511,18 @@ body {
 
 .model {
   height: 60vh;
-  width: auto;
+  width: 60%;
+  margin: 0 auto;
   position: relative; /* Or absolute, depending on your layout */
+  margin-top: 20px;
 }
 
-.model-title{
+.afm-title{
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .afm-description {
@@ -503,6 +550,9 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .teaching-philosophy h2 {
@@ -514,6 +564,11 @@ body {
 .teaching-philosophy p {
   font-size: 1.1rem;
   color: #4b5563;
+}
+
+.courses{
+  width: 80%;
+  margin: 0 auto;
 }
 
 .courses h2,
@@ -556,7 +611,6 @@ body {
 }
 
 .outreach-images {
-  text-align: center;
   padding: 40px 20px;
   background-color: #f9f9f9;
 }
@@ -567,14 +621,17 @@ body {
   color: #333;
 }
 
-.image-gallery {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto; */
+
+
+.carousel-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center; 
+  margin-left: 40px;
 }
 
 .outreach-image {
@@ -685,12 +742,15 @@ body {
 }
 
 .publication-image {
-  width: 150px;
-  height: 150px;
-  /* object-fit: cover; */
+  width: 10%;
+  height: 10%;
+  object-fit: cover; /* Fill area, crop if needed */
+  object-position: center; /* ensure center cropping */
   border-radius: 8px;
   margin-right: 20px;
 }
+
+
 
 .publication-content {
   text-align: left;
@@ -726,8 +786,21 @@ body {
 }
 
 
+/*Login */
+.loginButton:hover {
+  color: var(--hover-color);
+  background-color: var(--primary-bg);
+}
+
+.loginButton{
+  background-color: var(--hover-color);
+  color: var(--primary-bg);
+}
+
+
 /* Show Mobile Menu when Active */
 @media (max-width: 768px) {
+
 
   .menu {
     display: none;
@@ -747,16 +820,16 @@ body {
   }
 
   .hero {
-    margin-top: 25%; /* Reduce top margin */
+    margin-top: 45%; /* Reduce top margin */
     padding: 10px;  /* Reduce padding */
   }
 
   .hero-title {
-    font-size: 2.5rem; /* Smaller font size for hero title */
+    font-size: 1.8rem; /* Smaller font size for hero title */
   }
 
   .hero-subtitle {
-    font-size: 1.2rem; /* Smaller font size for subtitle */
+    font-size: 1rem; /* Smaller font size for subtitle */
     margin-top: 8px;
   }
 
@@ -880,8 +953,24 @@ body {
     width:50px !important;
   }
 
+  /* .tooltip{
+    display: none;
+  } */
+
   .tooltip{
     display: none;
+  }
+
+  .afm-description {
+    margin: 20px;
+  }
+
+  .model {
+    height: 60vh;
+    width: 80%;
+    margin: 0 auto;
+    position: relative; /* Or absolute, depending on your layout */
+    margin-top: 20px;
   }
 }
 
@@ -900,7 +989,73 @@ body {
     display: flex;
     z-index: 50;
   }
+
+  .publications-page {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .publications-list {
+    gap: 15px;
+  }
+
+  .publication-row {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .publication-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px;
+  }
+
+  .publication-content {
+    text-align: center;
+  }
+
+  .publication-title {
+    font-size: 1rem;
+  }
+
+  .publication-type-title {
+    font-size: 1.3rem;
+  }
+
+  .publication-author {
+    font-size: 0.85rem;
+  }
+  .afm-description {
+    margin: 20px;
+  }
+
+  .model {
+    height: 60vh;
+    width: 70%;
+    margin: 0 auto;
+    position: relative; /* Or absolute, depending on your layout */
+    margin-top: 20px;
+  }
 }
 
 
+/* Show Mobile and Tablet Menu when Active */
+@media (min-width: 992px) {
+  .image-gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 
+  }
+
+  .afm-description {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

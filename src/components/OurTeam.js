@@ -1,4 +1,71 @@
 import React from "react";
+import { AnimatedTooltip } from "./ui/animatedTooltip";
+
+const people = [
+  {
+    id: 1,
+    name: "Shan Zhou",
+    designation: "Assistant Professor",
+    image:
+      "/images/shanZhou.jpg",
+  },
+  {
+    id: 2,
+    name: "Dr. Zinnia Mallick",
+    designation: "Postdoc Nanoscience & Technology",
+    image:
+      "/images/zinnia.jpg",
+  },
+  {
+    id: 3,
+    name: "Junming Yue",
+    designation: "Graduate Student",
+    image:
+      "/images/junming.jpg",
+  },
+  {
+    id: 4,
+    name: "Natnael Sinebo",
+    designation: "Graduate Student",
+    image:
+      "/images/Natnael.jpg",
+  },
+  {
+    id: 5,
+    name: "Emily Marrs",
+    designation: "Graduate Student",
+    image:
+      "/images/emily.jpg",
+  },
+  {
+    id: 6,
+    name: "Joshua Marquardt",
+    designation: "BS Biomedical",
+    image:
+      "/images/joshua.jpg",
+  },
+  {
+    id: 7,
+    name: "Aryan Raval",
+    designation: "BS Computer Science",
+    image:
+      "/images/aryan.jpg",
+  },
+  {
+    id: 8,
+    name: "Ky Duyen Dao Nguyen",
+    designation: "BS Computer Science",
+    image:
+      "/images/ky.jpg",
+  },
+  {
+    id: 9,
+    name: "Marc Tchona",
+    designation: "BS Electrical Engineering",
+    image:
+      "/images/marc.jpg",
+  },
+];
 
 const teamSections = [
   {
@@ -164,6 +231,9 @@ const OurTeam = () => {
   return (
     <div className="our-team">
       <h1 className="team-title">Our Team</h1>
+      <div className="flex flex-row items-center mb-10 w-full tooltip">
+                <AnimatedTooltip items={people} />
+      </div>
       {teamSections.map((section, index) => (
         <div key={index} className="team-section animate__animated animate__fadeInLeft">
           <h2 className="team-section-title">{section.title}</h2>

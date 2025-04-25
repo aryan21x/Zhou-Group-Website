@@ -1,50 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { AnimatedTooltip } from "./ui/animatedTooltip";
-
-const people = [
-  {
-    id: 1,
-    name: "Shan Zhou",
-    designation: "Assistant Professor",
-    image:
-      "/images/shanZhou.jpg",
-  },
-  {
-    id: 2,
-    name: "Dr. Zinnia Mallick",
-    designation: "Postdoc",
-    image:
-      "/images/zinnia.jpg",
-  },
-  {
-    id: 3,
-    name: "Junming Yue",
-    designation: "Graduate Student",
-    image:
-      "/images/junming.jpg",
-  },
-  {
-    id: 4,
-    name: "Emily Marrs",
-    designation: "Graduate Student",
-    image:
-      "/images/emily.jpg",
-  },
-  {
-    id: 5,
-    name: "Joshua Marquardt",
-    designation: "BS Biomedical",
-    image:
-      "/images/joshua.jpg",
-  },
-  {
-    id: 6,
-    name: "Aryan Raval",
-    designation: "BS Computer Science",
-    image:
-      "/images/aryan.jpg",
-  },
-];
 
 const Home = () => {
   const [icon, setIcon] = useState("/images/atom.svg");
@@ -143,9 +97,7 @@ const Home = () => {
             Our mission: exploring the unknown realm of materials interfaces at the nanoscale
           </p>
         </header>
-        <div className="flex flex-row items-center mb-10 w-full tooltip">
-          <AnimatedTooltip items={people} />
-        </div>
+        
       </div>
 
       {/* Draggable & Moving SVGs */}
@@ -160,12 +112,15 @@ const Home = () => {
             top: atom.position.y,
             cursor: "grab",
             width: "100px",
-            // zIndex: "-1",
+            zIndex: "-1",
           }}
           className="atom-mobile"
           onMouseDown={(e) => startDrag(e, atom.id)}
         />
       ))}
+      <footer className="attribution-footer">
+        <p>Designed by Freepik</p>
+      </footer>
       
     </div>
   );

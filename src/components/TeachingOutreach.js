@@ -53,11 +53,26 @@ const outreachEvents = [
 
 
 const outreachImages = [
-  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach1.jpg", alt: "Outreach Event 1" },
-  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach2.jpg", alt: "Outreach Event 2" },
-  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach3.jpg", alt: "Outreach Event 3" },
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach1.jpg"},
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach2.jpg"},
+  { title: "Fall 2022: RCAS 8th Grade College & Career Fair", src: "/images/outreach3.jpg" },
 ];
 
+const outreachImages2 = [
+  { title: "Wise2025", src: "/images/wise1.jpg"},
+  { title: "Wise2025", src: "/images/wise2.jpg"},
+  { title: "Wise2025", src: "/images/wise3.jpg"},
+  { title: "Wise2025", src: "/images/wise4.jpg"},
+  { title: "Wise2025", src: "/images/wise5.jpg"},
+];
+
+const outreachImages3 = [
+  { title: "Engineering Camp 2025", src: "/images/camp1.jpg"},
+  { title: "Engineering Camp 2025", src: "/images/camp2.jpg"},
+  { title: "Engineering Camp 2025", src: "/images/camp3.jpg"},
+  { title: "Engineering Camp 2025", src: "/images/camp4.jpg"},
+  { title: "Engineering Camp 2025", src: "/images/camp5.jpg"},
+];
 
 
 const TeachingOutreach = () => {
@@ -162,12 +177,21 @@ const TeachingOutreach = () => {
             <img key={index} src={image.src} alt={image.alt} className="outreach-image" />
           ))} */}
           <div className="relative overflow-hidden w-full h-full py-20">
+            <h3 className="carousel-title"> RCAS 8th Grade College & Career Fair </h3>
             <Carousel slides={outreachImages} />
+          </div>
+          <div className="relative overflow-hidden w-full h-full py-20">
+            <h3 className="carousel-title"> Wise2025 </h3>
+            <Carousel slides={outreachImages2} />
+          </div>
+          <div className="relative overflow-hidden w-full h-full py-20">
+            <h3 className="carousel-title"> Engineering Camp 2025 </h3>
+            <Carousel slides={outreachImages3} />
           </div>
         </div>
       </section>
 
-      <section className="teaching-philosophy mt-4 animate__animated animate__fadeInLeft">
+      <section className="teaching-philosophy animate__animated animate__fadeInLeft">
         <h2>Teaching Philosophy</h2>
         <p>
           As a researcher with training in a broad spectrum of chemistry and
@@ -190,52 +214,6 @@ const TeachingOutreach = () => {
             </ul>
           </div>
         ))}
-      </section>
-
-      <section className="outreach">
-        {/* <h2>Outreach</h2> */}
-
-        <p className="model-title">Atomic Force Microscope - Click to Open</p>
-        <p className="afm-description">
-        The Atomic Force Microscope (AFM) is a powerful tool used to image surfaces at the nanometer scale. 
-        It operates by scanning a sharp tip over a sample surface, allowing researchers to study material properties 
-        at an atomic level. AFM is widely used in physics, chemistry, and biology for nanoscale imaging and analysis. 
-        Below is a 3D model of the AFM. Learn more about AFM and interact with a detailed model here:
-        <a href="https://atomicforcemicroscope.netlify.app/" target="_blank" rel="noopener noreferrer"> Atomic Force Microscopy</a>.
-        </p>
-        <div className ="model">
-        <Canvas>
-          <color attach="background" args={["#2a2a2a"]} />
-          <PerspectiveCamera key={refreskKey} makeDefault position={[0, 100, 1000]} fov={45} near={10} far={2000} ref={cameraRef}/>
-          <ambientLight intensity={0.75} position={[10, 10, 10]} />
-          <directionalLight position={[400, 400, 1000]} intensity={0.75} castShadow />
-          <pointLight position={[0, 0, 0]} intensity={500} color="#fff" />
-          <OrbitControls target={[0, 0, 0]} maxDistance={1000} />
-            <group position={[0, 0, 0]} scale={[scaleFactor, scaleFactor, scaleFactor]} rotation={[0, 3 * Math.PI / 2, 0]} >
-              <primitive object={model1.scene} ref={model1Ref} />
-            </group>
-            
-            <group position={[0, -5, -2]} scale={[scaleFactor - 2, scaleFactor - 2, scaleFactor - 2]} >
-              <primitive object={model2.scene} ref={model2Ref} />
-            </group>
-
-            <group position={[0, y2position, -2]} scale={[scaleFactor - 4, scaleFactor - 4, scaleFactor - 4]} >
-              <primitive object={model3.scene} ref={model3Ref} />
-            </group>
-            
-            <group position={[0, -40 + yposition, -110 + zposition]} scale={[scaleFactor * 3, scaleFactor * 3, scaleFactor * 3]} rotation={[0, Math.PI / 2, 0]}
-              onClick={() => handleClickAnimation()} >
-              <primitive object={model4.scene} ref={model4Ref} />
-            </group>
-        </Canvas>
-        </div>
-        {/* <ul>
-          {outreachEvents.map((event, index) => (
-            <li key={index}>
-              <strong>{event.year}:</strong> {event.event}
-            </li>
-          ))}
-        </ul> */}
       </section>
     </div>
   );

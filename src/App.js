@@ -8,6 +8,9 @@ import Publications from "./components/Publication";
 import News from "./components/News";
 import TeachingOutreach from "./components/TeachingOutreach";
 import Photos from "./components/Photos";
+import AFM from "./components/AFM";
+import FM from "./components/FM";
+import Login from "./components/Login";
 
 import "./App.css";
 
@@ -23,6 +26,9 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/teaching-outreach" element={<TeachingOutreach />} />
         <Route path="/photos" element={<Photos />} />
+        <Route path="/AFM" element={<AFM />} />
+        <Route path="/FM" element={<FM />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

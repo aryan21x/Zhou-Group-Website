@@ -7,10 +7,10 @@ const Navbar = () => {
   const [visibleText, setVisibleText] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [resetAnimation, setResetAnimation] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // Track current route
+  const location = useLocation();
 
-  // Typing Effect
   useEffect(() => {
     const startTypingEffect = () => {
       setVisibleText("");
@@ -30,6 +30,7 @@ const Navbar = () => {
   const handleHomeClick = () => {
     setResetAnimation((prev) => !prev);
     navigate("/");
+    setMenuOpen(false);
   };
 
   const menuItems = [
@@ -42,13 +43,13 @@ const Navbar = () => {
     { name: "Photos", path: "/photos" }
   ];
 
-  // Check if we're on the homepage to add/remove background class
   const isHomePage = location.pathname === "/";
+  const isMicroscopePage = location.pathname === "/AFM" || location.pathname === "/FM";
 
   return (
-    <nav className={`navbar ${isHomePage ? "no-background" : ""}${menuOpen ? "navMobile" : ""}`}>
+    <nav className={`navbar ${isHomePage ? "no-background" : ""}${menuOpen ? " navMobile" : ""}`}>
       {/* Logo */}
-      <div className="logo">
+      <div className="logo" onClick={handleHomeClick}>
         <div className="logo-text">
           {text.split("").map((char, index) => (
             <span key={index} className={`logo-char ${index < visibleText.length ? "highlight" : ""}`}>
@@ -70,6 +71,27 @@ const Navbar = () => {
             {item.name}
           </Link>
         ))}
+
+        {/* Dropdown */}
+        <div
+          className={`menu-item dropdown ${isMicroscopePage ? "active" : ""}`}
+          onMouseEnter={() => setDropdownOpen(true)}
+          onMouseLeave={() => setDropdownOpen(false)}
+        >
+          <span className="dropdown-label">Microscopes ▾</span>
+          {dropdownOpen && (
+            <div className="dropdown-menu">
+              <Link to="/AFM" className="dropdown-item">AFM</Link>
+              <Link to="/FM" className="dropdown-item">FM</Link>
+            </div>
+          )}
+        </div>
+        <Link
+          to="/login"
+          className={`menu-item ${location.pathname === "/login" ? "active" : ""}`}
+        >
+          Login
+        </Link>
       </div>
 
       {/* Mobile Menu Button */}
@@ -77,7 +99,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className={`mobile-menu`}>
+        <div className="mobile-menu">
           {menuItems.map((item) => (
             <Link
               key={item.name}
@@ -88,6 +110,17 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
+
+          <div className="mobile-dropdown">
+            <Link to="/AFM" className={`mobile-subitem ${location.pathname === "/AFM" ? "active" : ""}`}>AFM</Link>
+            <Link to="/FM" className={`mobile-subitem ${location.pathname === "/FM" ? "active" : ""}`}>FM</Link>
+          </div>
+          <Link
+          to="/login"
+          className={`mobile-menu-item ${location.pathname === "/login" ? "active" : ""}`}
+        >
+          Login
+        </Link>
         </div>
       )}
     </nav>
